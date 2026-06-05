@@ -25967,6 +25967,9 @@ async function ensureSubdomainBinding(puter2, subdomain, puterPath, desiredRootU
     if (!isNotFoundError(error)) {
       throw error;
     }
+    current = void 0;
+  }
+  if (!current || isNotFoundError(current)) {
     const created = await puter2.hosting.create(subdomain, puterPath);
     return { action: "created", site: created };
   }
